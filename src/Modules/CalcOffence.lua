@@ -2074,6 +2074,28 @@ function calcs.offence(env, actor, activeSkill)
 					source.CritChance = skillData.CritChance
 				end
 			end
+			-- Override for ballista/totem skills
+			if skillFlags.ballista or activeSkill.skillTypes[SkillType.UsedByTotem] then
+				if skillData.setMainHandPhysicalMin and skillData.setMainHandPhysicalMax then
+					source.PhysicalMin = skillData.setMainHandPhysicalMin
+					source.PhysicalMax = skillData.setMainHandPhysicalMax
+					--- zero other damage types
+					source.ChaosMin = 0
+					source.ChaosMax = 0
+					source.FireMin = 0
+					source.FireMax = 0
+					source.ColdMin = 0
+					source.ColdMax = 0
+					source.LightningMin = 0
+					source.LightningMax = 0
+				end
+				if skillData.setMainHandBaseCritChance then
+					source.CritChance = skillData.setMainHandBaseCritChance / 100
+				end
+				if skillData.setMainHandAttackTime then
+					source.AttackRate = 1000 / skillData.setMainHandAttackTime
+				end
+			end 
 			if critOverride and source.type and source.type ~= "None" then
 				source.CritChance = critOverride
 			end

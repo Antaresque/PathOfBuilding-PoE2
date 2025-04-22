@@ -1813,6 +1813,23 @@ return {
 	mod("MeleeWeaponRange", "BASE", nil),
 	mod("UnarmedRange", "BASE", nil),
 },
+-- ballista alt attack override
+["alt_attack_container_main_hand_weapon_minimum_physical_damage"] = {
+	skill("setMainHandPhysicalMin", nil)
+},
+["alt_attack_container_main_hand_weapon_maximum_physical_damage"] = {
+	skill("setMainHandPhysicalMax", nil)
+},
+["alt_attack_container_main_hand_weapon_critical_strike_chance"] = {
+	skill("setMainHandBaseCritChance", nil)
+},
+["alt_attack_container_main_hand_base_weapon_attack_duration_ms"] = {
+	skill("setMainHandAttackTime", nil)
+},
+["alt_attack_container_main_hand_weapon_attack_duration_ms"] = {
+	skill("setMainHandAttackTimeBonus", nil)
+},
+
 ["override_off_hand_base_critical_strike_chance_to_5%"] = {
 	skill("setOffHandBaseCritChance", nil),
 	value = 5,
