@@ -700,6 +700,11 @@ function PassiveSpecClass:AllocNode(node, altPath)
 		return
 	end
 
+	-- Do not allocate keystone nodes if weapon set is selected
+	if node.type == "Keystone" and (self.allocMode == 1 or self.allocMode == 2) then
+		return
+	end
+
 	-- Allocate all nodes along the path
 	if #node.intuitiveLeapLikesAffecting > 0 then
 		node.alloc = true
